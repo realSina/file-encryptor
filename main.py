@@ -255,13 +255,13 @@ class App:
         self.root.update()
         try:
             enc_file = encrypt_file(self.selected_file, self.password)
-            success_text = f"[ENCRYPTION] | File '{self.selected_file}' has been encrypted with password '{self.password}'. Saved to '{enc_file}'"
+            success_text = f"[ENCRYPTION] File '{self.selected_file}' has been encrypted with password '{self.password}'. Saved to '{enc_file}'"
             self.write_log_to_file(success_text)
             self.load_log_into_widget()
             self.show_notification(f"Encrypted: {os.path.basename(enc_file)}", error=False)
             self.back_to_home()
         except Exception as e:
-            err_text = f"[ENCRYPTION] | File '{self.selected_file}' hasn't been encrypted with password '{self.password}'. Error: {e}"
+            err_text = f"[ENCRYPTION] File '{self.selected_file}' hasn't been encrypted with password '{self.password}'. Error: {e}"
             self.write_log_to_file(err_text)
             self.load_log_into_widget()
             self.show_notification(f"Encrypt error: {e}", error=True)
@@ -270,19 +270,19 @@ class App:
         if not self.selected_file:
             messagebox.showwarning("Warning", "Please select a file first.")
             return
-        info_text = f"[PROCESS] | File '{self.selected_file}' is going to be decrypted with password '{self.password}'"
+        info_text = f"[PROCESS] File '{self.selected_file}' is going to be decrypted with password '{self.password}'"
         self.write_log_to_file(info_text)
         self.load_log_into_widget()
         self.root.update()
         try:
             dec_file = decrypt_file(self.selected_file, self.password)
-            success_text = f"[DECRYPTION] | File '{self.selected_file}' has been decrypted with password '{self.password}'. Saved to '{dec_file}'"
+            success_text = f"[DECRYPTION] File '{self.selected_file}' has been decrypted with password '{self.password}'. Saved to '{dec_file}'"
             self.write_log_to_file(success_text)
             self.load_log_into_widget()
             self.show_notification(f"Decrypted: {os.path.basename(dec_file)}", error=False)
             self.back_to_home()
         except Exception as e:
-            err_text = f"[DECRYPTION] | File '{self.selected_file}' hasn't been decrypted with password '{self.password}'. Error: {e}"
+            err_text = f"[DECRYPTION] File '{self.selected_file}' hasn't been decrypted with password '{self.password}'. Error: {e}"
             self.write_log_to_file(err_text)
             self.load_log_into_widget()
             self.show_notification(f"Decrypt error: {e}", error=True)
